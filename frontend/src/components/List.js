@@ -88,14 +88,14 @@ const ListOfEntries = () => {
                         <td>{entry.first_name}</td>
                         <td>{entry.last_name}</td>
                         <td>{entry.no_of_hours}</td>
-                        <td><button className="btn btn-danger" onClick={()=>deleteTimeEntry(entry.id)}>Del BTN</button></td>
+                        <td><button className="btn btn-danger" onClick={()=>deleteTimeEntry(entry.id)}>Delete</button></td>
                     </tr>
                 ))}
             
             </tbody>
         </table>
         {
-            (graphData.length > 0 && graphHours.length > 0 && graphNames.length > 0) && <Donut params={graphData} hours = {graphHours} names = {graphNames}  />
+            (graphData.length > 0 && graphHours.length > 0 && graphNames.length > 0) && <div align = "Center"><Donut params={graphData} hours = {graphHours} names = {graphNames}  /> </div>
         }
     </Fragment>
     

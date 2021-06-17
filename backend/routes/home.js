@@ -17,7 +17,7 @@ router.route('/').get(async(req,res) =>{
 router.route('/all').get(async(req,res) =>{
     try{
         const userDetails = await pool.query("SELECT no_of_hours.id, users.first_name,users.last_name,  no_of_hours.no_of_hours FROM users, no_of_hours where users.id = no_of_hours.user_id");
-        console.log(userDetails.rows)
+        // console.log(userDetails.rows)
         res.json(userDetails.rows)
     }
     catch(err){
@@ -27,11 +27,19 @@ router.route('/all').get(async(req,res) =>{
 
 router.route('/').post(async(req,res) =>{
     try {
-        const newUser = await pool.query("INSERT INTO users (first_name, last_name) VALUES($1,$2) RETURNING *",
-        [req.body.first_name, req.body.last_name])
-        console.log(newUser);
+        const existingUserDetails = await pool.query("SELECT users.id FROM users where users.first_name = ($1) and users.last_name = ($2)",[req.body.first_name, req.body.last_name]);
+        // console.log(existingUserDetails)
+        if(existingUserDetails.rowCount>0){
+            user = existingUserDetails.rows[0]['id']
+        }
+        else{
+            const newUser = await pool.query("INSERT INTO users (first_name, last_name) VALUES($1,$2) RETURNING *",
+            [req.body.first_name, req.body.last_name])
+            console.log(newUser);
+            user = newUser.rows[0]['id']
+        }
         const newHours = await pool.query("INSERT INTO no_of_hours (user_id, no_of_hours) VALUES($1,$2) RETURNING *",
-        [parseInt(newUser.rows[0]['id']), req.body.no_of_hours])
+        [parseInt(user), req.body.no_of_hours])
         res.json(newHours.rows);
 
        
