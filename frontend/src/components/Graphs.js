@@ -5,7 +5,7 @@ class Donut extends Component {
  
   constructor(props) {
     super(props);
-    console.log(props)
+    // console.log(props)
     this.state = {
       options: {      labels: props.names
       },
@@ -17,7 +17,7 @@ class Donut extends Component {
 
     return (
       <div className="donut">
-        <Chart options={this.state.options} series={this.state.series} type="donut" width="420" />
+        <Chart options={this.state.options} series={this.state.series} type="donut" width="500" />
  </div>
     );
   }

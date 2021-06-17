@@ -27,9 +27,9 @@ const InputUserDetails = () => {
         <Fragment>
             <h1 className="text-center mt-5">User Hours Management System</h1>
             <form className="d-flex mt-5" onSubmit={onSubmitForm}>
-                <input type = "text" className="form-control" value={first_name} onChange={e=> setfirst_name(e.target.value)}/>
-                <input type = "text" className="form-control" value={last_name} onChange={e=> setlast_name(e.target.value)}/>
-                <input type = "text" className="form-control" value={no_of_hours} onChange={e=> setno_of_hours(e.target.value)}/>
+                <input type = "text" required placeholder="First Name" className="form-control" value={first_name} onChange={e=> setfirst_name(e.target.value)}/>
+                <input type = "text" required placeholder="Last Name" className="form-control" value={last_name} onChange={e=> setlast_name(e.target.value)}/>
+                <input type = "number" required placeholder="Number of Hours" className="form-control" value={no_of_hours} onChange={e=> setno_of_hours(e.target.value)}/>
                 <button className="btn btn-success">Add User</button>
             </form>
         </Fragment>
