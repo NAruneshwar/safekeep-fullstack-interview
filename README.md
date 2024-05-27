@@ -1,3 +1,8 @@
+Pinning it now as its been few years since the interview.
+I was given less than a day to finish the following steps, I have never used Docker at this point and my react skills were very limited, had to pick it up quickly, build backend, frontend and a docker to contain it all.
+I did end up getting an offer from them, I had 2 other offers at this point so i ended up chosing another company.
+
+
 # Safekeep Fullstack Challenge
 
 ## About this project
